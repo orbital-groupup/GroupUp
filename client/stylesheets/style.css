@@ -1,6 +1,7 @@
-body { padding-top: 50px; }
+body { padding-top: 50px; font-family: Lato; }
 #services {
 	padding: 50px;
+	
 }
 #contact {
 	padding: 100px;
@@ -19,7 +20,6 @@ body { padding-top: 50px; }
 	background: url(home.jpg);
 	background-size: cover;
 	background-position: center;
-	font-family: Lato;
 	color: white;
 	background-repeat: no-repeat;
 }
