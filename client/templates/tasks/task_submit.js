@@ -5,7 +5,7 @@ Template.taskSubmit.events({
 		var task = {
 			title: $(e.target).find('[name=title]').val(),
 			description: $(e.target).find('[name=description]').val(),
-			groupId: template.data._id
+			groupId: Router.current().params._id
 		};
 
 		Meteor.call('taskInsert', task, function(error, result) {
