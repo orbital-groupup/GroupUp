@@ -1,7 +1,19 @@
 <template name="groupsList">
+	<div class="jumbotron">
+	  <h1>Welcome to your Dashboard!</h1>
+	  <p>Create a group, or join one.</p>
+	  <p>
+	  	<a class="btn btn-success btn-lg" href="{{pathFor 'groupSubmit'}}" role="button">Create new Group</a>
+	  	<a class="btn btn-primary btn-lg" href="{{pathFor 'joinGroup'}}" role="button">Join a Group</a>
+	  </p>
+	</div>
+	
 	<div class="groups">
+		<div class="row">
 		{{#each groups}}
 			{{> groupItem}}
 		{{/each}}
+		</div>
 	</div>
+
 </template>

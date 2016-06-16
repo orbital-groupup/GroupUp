@@ -13,11 +13,7 @@ GroupUp</a>
 			</div> 
 			<div class="collapse navbar-collapse" id="navigation"> 
 				<ul class="nav navbar-nav">
-					{{#if currentUser}}<li><a href="{{pathFor 'groupsList'}}">Your Groups</a></li>{{/if}}
-				</ul>
-				<ul class="nav navbar-nav">
-					{{#if currentUser}}<li><a href="{{pathFor 'groupSubmit'}}">Create New Group</a></li>
-														 <li><a href="{{pathFor 'joinGroup'}}">Join a group</a></li>{{/if}}
+					{{#if currentUser}}<li><a href="{{pathFor 'groupsList'}}">Dashboard</a></li>{{/if}}
 				</ul>
 				<ul class="nav navbar-nav navbar-right"> 
 					{{> loginButtons}} 
