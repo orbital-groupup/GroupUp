@@ -9,7 +9,7 @@ Template.inviteToGroup.events({
 
 		Meteor.call('inviteToGroup', group, function(error,result){
 			if (error)
-				return alert(error.reason);
+				return throwError(error.reason);
 
 			Router.go('groupPage', {_id: result._id});
 		});

@@ -10,7 +10,7 @@ Template.groupEdit.events({
 
 		Groups.update(currentGroupId, {$set: groupProperties}, function(error) {
 			if (error)
-				alert(error.reason);
+				throwError(error.reason);
 			else
 				Router.go('groupPage', {_id: currentGroupId});
 		});
