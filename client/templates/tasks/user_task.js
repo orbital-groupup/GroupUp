@@ -1,10 +1,4 @@
-Template.allocatedTask.helpers({
-	'ownsTask': function(){
-		return this.allocatedTo === Meteor.user().username;
-	}
-});
-
-Template.allocatedTask.events({
+Template.userTask.events({
 	'click button#completeTask': function(e){
 		e.preventDefault();
 

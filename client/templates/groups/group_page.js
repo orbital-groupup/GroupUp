@@ -8,10 +8,10 @@ Template.groupPage.helpers({
 	},
 
 	allocatedTasks: function(){
-		return Tasks.find({allocatedTo: {$ne: ''}});
+		return Tasks.find({allocatedTo: {$ne: ''}, completed: false});
 	},
 
 	userTasks: function(){
-		return Tasks.find({allocatedTo: Meteor.user().username});
+		return Tasks.find({allocatedTo: Meteor.user().username, completed: false});
 	}
 });
