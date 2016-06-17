@@ -5,6 +5,7 @@ Template.taskSubmit.events({
 		var task = {
 			title: $(e.target).find('[name=title]').val(),
 			description: $(e.target).find('[name=description]').val(),
+			points: $(e.target).find('[name=points]').val(),
 			groupId: Router.current().params._id
 		};
 
