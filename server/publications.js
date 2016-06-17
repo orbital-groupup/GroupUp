@@ -6,4 +6,4 @@ Meteor.publish('tasks', function(groupId){
 	return Tasks.find({groupId: groupId});
 });
 
-Meteor.publish( 'events', function() { return Events.find(); } );
+Meteor.publish( 'events', function(groupId) { return Events.find({groupId: groupId}); } );

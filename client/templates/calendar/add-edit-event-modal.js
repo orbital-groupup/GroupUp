@@ -47,7 +47,8 @@ Template.addEditEventModal.events({
           start: template.find( '[name="start"]' ).value,
           end: template.find( '[name="end"]' ).value,
           type: template.find( '[name="type"] option:selected' ).value,
-          guests: parseInt( template.find( '[name="guests"]' ).value, 10 )
+          hours: parseInt( template.find( '[name="hours"]' ).value, 10 ),
+          groupId: Router.current().params._id
         };
 
     if ( submitType === 'editEvent' ) {

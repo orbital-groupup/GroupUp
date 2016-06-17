@@ -13,6 +13,7 @@ Template.events.onRendered( () => {
     events( start, end, timezone, callback ) {
       let data = Events.find().fetch().map( ( event ) => {
         event.editable = !isPast( event.start );
+        event.durationEditable = false;
         return event;
       });
 
@@ -24,7 +25,7 @@ Template.events.onRendered( () => {
     eventRender( event, element ) {
       element.find( '.fc-content' ).html(
         `<h4>${ event.title }</h4>
-         <p class="guest-count">${ event.guests } Guests</p>
+         <p class="guest-count">${ event.hours } hours</p>
          <p class="type-${ event.type }">#${ event.type }</p>
         `
       );
