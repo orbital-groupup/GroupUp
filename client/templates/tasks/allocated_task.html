@@ -1,0 +1,11 @@
+<template name="allocatedTask">
+	<div class="well">
+			<h3>{{title}}</h3>
+			{{#if ownsTask}}
+				<button class="btn btn-default pull-right" id="completeTask">Mark as completed</button>
+			{{/if}}
+			<p>{{description}}</p>
+			<p><strong>{{pluralize points "point"}}</strong></p>	
+			<p>Allocated to {{allocatedTo}}</p>
+		</div>
+</template>
