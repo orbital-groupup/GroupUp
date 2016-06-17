@@ -4,6 +4,7 @@
 			<h1>{{title}}</h1>
 		</div>
 		<div class="text-right">
+			<button class="btn btn-default" id="autoAllocate">Auto-allocate available tasks</button>
 			<a class="btn btn-default" href="{{pathFor 'taskSubmit'}}">Add task</a>
 			<a class="btn btn-default" href="{{pathFor 'inviteToGroup'}}">Invite someone</a>
 		</div>
@@ -39,9 +40,10 @@
 		</div>
 		<div class="col-xs-12 col-md-4">
 			<ol>
-			<h2><u>Leaderboards</u></h2>
+			<h2><u>Leaderboard</u></h2>
 			{{#each members}}
-				<li>{{name}}<span style="padding-left: 4em"></span>{{pluralize points "point"}}</li>
+				<li>{{name}}<span style="padding-left: 4em"></span>Actual {{pluralize actualPoints "point"}}
+				<span style="padding-left: 4em">Expected {{pluralize expectedPoints "point"}}</span></li>
 			{{/each}}
 			</ol>
 		</div>

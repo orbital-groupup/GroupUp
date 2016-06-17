@@ -6,5 +6,15 @@ Template.unallocatedTask.events({
 			if (error)
 				throwError(error.reason);
 		});
+
+		var group = {
+			groupId: this.groupId,
+			points: this.points
+		}
+
+		Meteor.call('updateExpectedPoints', group, function(error){
+			if (error)
+				throwError(error.reason);
+		})
 	}
 });

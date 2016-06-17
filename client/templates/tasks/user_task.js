@@ -16,7 +16,7 @@ Template.userTask.events({
 			completed: this.completed
 		};
 
-		Meteor.call('updatePoints', group, function(error, result) {
+		Meteor.call('updateActualPoints', group, function(error, result) {
 			if (error) {
 				return throwError(error.reason);
 			}
