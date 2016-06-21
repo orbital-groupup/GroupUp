@@ -5,6 +5,7 @@ Meteor.methods({
       start: String,
       end: String,
       type: String,
+      groupId: String,
       dow: Match.Optional(Array),
       auto: Boolean,
       weekType: Match.Optional(String),
@@ -26,6 +27,7 @@ Meteor.methods({
       title: Match.Optional( String ),
       start: String,
       end: String,
+      groupId: String,
       type: Match.Optional( String ),
       dow: Match.Optional(Array),
       weekType: Match.Optional(String),
@@ -56,11 +58,11 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  'clearAllEvents': function(){
-    Events.remove({});
+  'clearAllEvents': function(groupId){
+    Events.remove({groupId:groupId});
   },
 
-  'clearMyEvents': function(){
-    Events.remove({owner: Meteor.user().username});
+  'clearMyEvents': function(groupId){
+    Events.remove({owner: Meteor.user().username, groupId: groupId});
   }
 })

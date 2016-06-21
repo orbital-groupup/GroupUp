@@ -14,6 +14,7 @@ Template.events.onCreated( () => {
 
 
 Template.events.onRendered( () => {
+  var groupId = Router.current().params._id;
   $( '#events-calendar' ).fullCalendar({
 
     header: {
@@ -30,13 +31,13 @@ Template.events.onRendered( () => {
       
       var eventView = Session.get('eventView');
       if (eventView === 'odd'){
-        var options = {weekType: {$not: 'Even Week'}};
+        var options = {weekType: {$not: 'Even Week'}, groupId: groupId};
       }
       else if (eventView === 'even'){
-        var options = {weekType: {$not: 'Odd Week'}};
+        var options = {weekType: {$not: 'Odd Week'}, groupId: groupId};
       }
       else{
-        var options = {};
+        var options = {groupId: groupId};
       }
 
       let data = Events.find(options).fetch().map( ( event ) => {
@@ -133,13 +134,13 @@ Template.events.onRendered( () => {
 
     var eventView = Session.get('eventView');
     if (eventView === 'odd'){
-      var options = {weekType: {$not: 'Even Week'}};
+      var options = {weekType: {$not: 'Even Week'}, groupId: groupId};
     }
     else if (eventView === 'even'){
-      var options = {weekType: {$not: 'Odd Week'}};
+      var options = {weekType: {$not: 'Odd Week'}}, groupId: groupId;
     }
     else{
-      var options = {};
+      var options = {groupId: groupId};
     }
     Events.find(options).fetch();
     $( '#events-calendar' ).fullCalendar( 'refetchEvents' );
