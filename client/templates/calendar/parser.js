@@ -100,7 +100,7 @@ Template.parser.events({
 
 	'click button#clear-events': function(evt,tpl){
 		evt.preventDefault();
-		Meteor.call('clearAllEvents', function(err,res){
+		Meteor.call('clearAllEvents', this._id, function(err,res){
 			if (err)
 				console.log(err);
 			else
@@ -111,7 +111,7 @@ Template.parser.events({
 
 	'click button#clear-my-events': function(evt,tpl){
 		evt.preventDefault();
-		Meteor.call('clearMyEvents', function(err,res){
+		Meteor.call('clearMyEvents', this._id, function(err,res){
 			if (err)
 				console.log(err);
 			else

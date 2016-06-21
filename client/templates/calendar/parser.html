@@ -15,14 +15,8 @@
 				<th>Session Type</th>
 				<th>Session Number</th>
 			</tr>
-			<!--
 			{{#each query in url.queries}}
-				{{>module query=query year=url.year sem=url.sem index=@index}}
-			{{/each}}
-			-->
-
-			{{#each query in url.queries}}
-				{{>module query=query index=@index}}
+				{{>module query=query index=@index groupId=this._id}}
 			{{/each}}
 		</table>
 

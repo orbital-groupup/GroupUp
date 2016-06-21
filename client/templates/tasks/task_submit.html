@@ -11,6 +11,13 @@
 			<input name="description" id="description" type ="text" value="" placeholder="Describe your task" class="form-control">
 		</div>
 		<div class="form-group">
+			<label class="control-label" for="deadline">Deadline</label>
+			<div class="input-group datetimepicker">
+		    <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+		    <input name="deadline" id="deadline" class="set-due-date form-control" type="text"/>
+		  </div>
+		</div>
+		<div class="form-group">
 			<label class="control-label" for="points">Points</label>
 			<input name="points" id="points" type ="number" min="0" max="100" value="" placeholder="Points for this task" class="form-control">
 		</div>

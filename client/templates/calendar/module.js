@@ -1,17 +1,4 @@
 Template.module.helpers({
-	/*
-	moduleCode: function(){
-		return this.substring(0,this.indexOf('['));
-	},
-	
-	moduleSessionType: function(){
-		return this.substring(this.indexOf('[')+1, this.indexOf(']'));
-	},
-
-	moduleSessionNumber: function(){
-		return this.substring(this.indexOf('=')+1);
-	},
-	*/
 
 	moduleInfo: function(){
 		if (Session.get('mod'+this.index) !== undefined){
@@ -46,6 +33,7 @@ Template.module.helpers({
 					break;
 			}
 
+
 			var event = {
 				title: this.query.moduleCode + this.query.moduleSessionType,
 				start: myTiming.StartTime.substr(0,2) + ':' + myTiming.StartTime.substr(2,2) + ':00',
@@ -53,6 +41,7 @@ Template.module.helpers({
 				type: 'School',
 				dow: [dayNum],
 				weekType: myTiming.WeekText,
+				groupId: this.groupId,
 				auto: true,
 				owner: Meteor.user().username
 			};
@@ -65,6 +54,8 @@ Template.module.helpers({
 					return res;
 				}
 			});
+
+			Session.set('mod'+this.index, undefined);
 	
 			return myTiming.DayText + ' ' + myTiming.StartTime + '-' + myTiming.EndTime + ' ' + myTiming.Venue + ' ' + myTiming.WeekText;
 		}

@@ -54,6 +54,7 @@ Template.addEditEventModal.events({
           start: template.find( '[name="start"]' ).value,
           end: template.find( '[name="end"]' ).value,
           type: template.find( '[name="type"] option:selected' ).value,
+          groupId: Router.current().params._id,
           weekType: 'None',
           auto: false,
           owner: Meteor.user().username

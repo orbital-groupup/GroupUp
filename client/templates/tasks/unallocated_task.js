@@ -7,6 +7,13 @@ Template.unallocatedTask.events({
 				throwError(error.reason);
 		});
 
+		Meteor.call('insertEmail', Meteor.user().emails[0].address, this.deadline, function(err, res){
+			if (err)
+				throwError(err.reason);
+			else
+				return res;
+		})
+
 		var group = {
 			groupId: this.groupId,
 			points: this.points
