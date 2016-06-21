@@ -3,6 +3,7 @@ let closeModal = () => {
   $( '.modal-backdrop' ).fadeOut();
 };
 
+
 Template.addEditEventModal.helpers({
   modalType( type ) {
     let eventModal = Session.get( 'eventModal' );
@@ -10,6 +11,7 @@ Template.addEditEventModal.helpers({
       return eventModal.type === type;
     }
   },
+
   modalLabel() {
     let eventModal = Session.get( 'eventModal' );
 
@@ -35,6 +37,11 @@ Template.addEditEventModal.helpers({
   }
 });
 
+Template.addEditEventModal.helpers({
+  'isDisabled': function(auto){
+    return auto ? 'disabled' : '';
+  }
+});
 
 Template.addEditEventModal.events({
   'submit form' ( event, template ) {
@@ -47,8 +54,9 @@ Template.addEditEventModal.events({
           start: template.find( '[name="start"]' ).value,
           end: template.find( '[name="end"]' ).value,
           type: template.find( '[name="type"] option:selected' ).value,
-          hours: parseInt( template.find( '[name="hours"]' ).value, 10 ),
-          groupId: Router.current().params._id
+          weekType: 'None',
+          auto: false,
+          owner: Meteor.user().username
         };
 
     if ( submitType === 'editEvent' ) {
@@ -64,6 +72,7 @@ Template.addEditEventModal.events({
       }
     });
   },
+
   'click .delete-event' ( event, template ) {
     let eventModal = Session.get( 'eventModal' );
     if ( confirm( 'Are you sure? This is permanent.' ) ) {
@@ -77,5 +86,4 @@ Template.addEditEventModal.events({
       });
     }
   }
-  
 });
