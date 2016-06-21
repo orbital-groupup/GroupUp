@@ -6,6 +6,7 @@ Template.taskSubmit.events({
 			title: $(e.target).find('[name=title]').val(),
 			description: $(e.target).find('[name=description]').val(),
 			points: $(e.target).find('[name=points]').val(),
+			deadline: $(e.target).find('[name=deadline]').val(),
 			groupId: Router.current().params._id
 		};
 
@@ -17,4 +18,8 @@ Template.taskSubmit.events({
 			Router.go('groupPage', {_id: result._id});
 		})
 	}
+});
+
+Template.taskSubmit.onRendered(function(){
+	this.$('.datetimepicker').datetimepicker();
 });
