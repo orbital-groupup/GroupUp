@@ -74,6 +74,7 @@ Template.addEditEventModal.events({
   },
 
   'click .delete-event' ( event, template ) {
+    event.preventDefault();
     let eventModal = Session.get( 'eventModal' );
     if ( confirm( 'Are you sure? This is permanent.' ) ) {
       Meteor.call( 'removeEvent', eventModal.event, ( error ) => {
