@@ -1,0 +1,43 @@
+<template name="parser">
+	<label for="parse-url">Enter the NUSMODS URL</label><br>
+	<input class="form-control" id="parse-url" name="parse-url" size="40"	/>
+	<button class="btn btn-default" id="parse-button">Parse the URL</button>
+	<br>
+
+	<h3>Parsed info:</h3>
+	{{#if url}}
+		<p><strong>URL: </strong>{{url.url}}</p>
+		<p><strong>Year: </strong>{{url.year}}</p>
+		<p><strong>SEM: </strong>{{url.sem}}</p>
+		<table>
+			<tr>
+				<th>Module Code</th>
+				<th>Session Type</th>
+				<th>Session Number</th>
+			</tr>
+			<!--
+			{{#each query in url.queries}}
+				{{>module query=query year=url.year sem=url.sem index=@index}}
+			{{/each}}
+			-->
+
+			{{#each query in url.queries}}
+				{{>module query=query index=@index}}
+			{{/each}}
+		</table>
+
+		{{else}}
+			<p>Please enter a URL.</p>
+
+	{{/if}}
+	<br>
+	<button class="btn btn-default" id="clear-events" name="clear-events">Clear all Events</button>
+	<button class="btn btn-default" id="clear-my-events" name="clear-my-events">Clear my Events</button>
+
+	<button class="btn btn-default pull-right {{isActive ''}}" id="all-events" name="all-events">View All Events</button>
+	<button class="btn btn-default pull-right {{isActive 'odd'}}" id="odd-events" name="odd-events">View Odd Week Only</button>
+	<button class="btn btn-default pull-right {{isActive 'even'}}" id="even-events" name="even-events">View Even Week Only</button>
+
+	<br>
+
+</template>

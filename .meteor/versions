@@ -20,6 +20,7 @@ caching-compiler@1.0.5
 caching-html-compiler@1.0.6
 callback-hook@1.0.9
 check@1.2.2
+dandv:http-more@1.0.7_1
 ddp@1.2.5
 ddp-client@1.2.8
 ddp-common@1.2.6
@@ -59,6 +60,7 @@ logging@1.0.13
 mdg:validation-error@0.2.0
 meteor@1.1.15
 meteor-base@1.0.4
+meteortoys:toykit@3.0.4
 minifier-css@1.1.12
 minifier-js@1.1.12
 minimongo@1.0.17
@@ -69,6 +71,7 @@ modules-runtime@0.6.4
 momentjs:moment@2.13.1
 mongo@1.1.8
 mongo-id@1.0.5
+msavin:jetsetter@2.0.0
 npm-bcrypt@0.8.6_1
 npm-mongo@1.4.44
 observe-sequence@1.0.12
