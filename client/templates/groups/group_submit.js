@@ -28,7 +28,7 @@ Template.groupSubmit.events({
 				return throwError(error.reason);
 			}
 
-			Router.go('groupPage', {_id: result._id});
+			Router.go('groupsList');
 		})
 	}
 });
