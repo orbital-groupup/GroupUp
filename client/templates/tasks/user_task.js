@@ -22,5 +22,31 @@ Template.userTask.events({
 			}
 		});
 
+	},
+
+	'click button.close-task': function(e,t){
+		e.preventDefault();
+
+		Tasks.update({_id: this._id}, {$set: {allocatedTo: ""}}, function(error){
+			if (error)
+				throwError(error.reason);
+		});
+
+		Meteor.call('removeEmail', this._id, function(err, res){
+			if (err)
+				throwError(err.reason);
+			else
+				return res;
+		})
+
+		var group = {
+			groupId: this.groupId,
+			points: -1 * this.points
+		}
+
+		Meteor.call('updateExpectedPoints', group, function(error){
+			if (error)
+				throwError(error.reason);
+		})
 	}
 });

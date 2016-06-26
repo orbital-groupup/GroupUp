@@ -1,7 +1,10 @@
 <template name="allocatedTask">
-	<div class="well">
+	<div class="well task">
 			<h3>{{title}}</h3>
 			{{#if ownsTask}}
+				<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	      </button>
 				<button class="btn btn-default pull-right" id="completeTask">Mark as completed</button>
 			{{/if}}
 			<p>{{description}}</p>
