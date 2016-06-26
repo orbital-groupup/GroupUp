@@ -1,6 +1,9 @@
 <template name="unallocatedTask">
-		<div class="well">
+		<div class="well task">
 			<h3>{{title}}</h3>
+			<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+      </button>
 			<button class="btn btn-default pull-right" id="takeTask">Take task</button>
 			<p>{{description}}</p>
 			<p><strong>{{pluralize points "point"}}</strong></p>	
