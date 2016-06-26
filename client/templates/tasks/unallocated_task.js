@@ -7,7 +7,7 @@ Template.unallocatedTask.events({
 				throwError(error.reason);
 		});
 
-		Meteor.call('insertEmail', Meteor.user().emails[0].address, this.deadline, function(err, res){
+		Meteor.call('insertEmail', Meteor.user().emails[0].address, this.reminder, function(err, res){
 			if (err)
 				throwError(err.reason);
 			else
