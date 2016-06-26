@@ -36,6 +36,48 @@ Template.unallocatedTask.events({
 				Meteor.call('taskRemove', this._id);
 			}
 		}
+	},
 
+	'click button#allocateToBtn': function(e,t){
+		e.preventDefault();
+		// check if that user is in group at all
+		let allocateTo = $("#myModal").find('[name=allocateTo]').val();
+		if(_.find(Groups.findOne(this.groupId).members, function(m){ return m.name === allocateTo; } ) ){
+		}
+		else{
+		 	throwError ('Member not found')
+		 	return;
+		}
+
+		$('.modal-backdrop').remove();
+
+		// let allocateTo = $(e.target).find('[name=allocateTo]').val();
+		
+		Tasks.update({_id: this._id}, {$set: {allocatedTo: allocateTo}}, function(error){
+			if (error){
+				throwError(error.reason);
+				console.log(error.reason);
+			}
+		});
+
+		let email = Meteor.users.findOne({username: allocateTo}).emails[0].address;
+
+		Meteor.call('insertEmail', email, this.reminder, this._id, function(err, res){
+			if (err)
+				throwError(err.reason);
+			else
+				return res;
+		})
+
+		var group = {
+			groupId: this.groupId,
+			points: this.points
+		}
+
+		Meteor.call('updateExpectedPoints', group, function(error){
+			if (error)
+				throwError(error.reason);
+		});
+		
 	}
 });
