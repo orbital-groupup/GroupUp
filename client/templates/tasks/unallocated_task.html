@@ -7,7 +7,9 @@
 			<button class="btn btn-default pull-right" id="takeTask">Take task</button>
 			<p>{{description}}</p>
 			<p><strong>{{pluralize points "point"}}</strong></p>
+			{{#if isGroupOwner}}
 			<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Allocate</button>
+			{{/if}}
 
 			<!-- Modal -->
 			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

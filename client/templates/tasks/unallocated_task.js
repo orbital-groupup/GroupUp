@@ -81,3 +81,9 @@ Template.unallocatedTask.events({
 		
 	}
 });
+
+Template.unallocatedTask.helpers({
+	'isGroupOwner': function(){
+		return Meteor.user().username == Groups.findOne({_id: this.groupId}).author;
+	}
+})
