@@ -23,13 +23,19 @@ var sendPendingEmails = function(){
 }
 
 Meteor.methods({
-	'insertEmail': function(email, deadline){
+	'insertEmail': function(email, reminder, taskId){
 		check(email, String);
-		check(deadline, Date);
+		check(reminder, Date);
 		
 		Emails.insert({
 			email: email,
-			emailAt: deadline
+			emailAt: reminder,
+			taskId: taskId
 		});
 	},
+
+	'removeEmail': function(taskId){
+		check(taskId, String);
+		Emails.remove({taskId: taskId});
+	}
 })

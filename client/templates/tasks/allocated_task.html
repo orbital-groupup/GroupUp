@@ -1,11 +1,15 @@
 <template name="allocatedTask">
-	<div class="well">
+	<div class="well task">
 			<h3>{{title}}</h3>
 			{{#if ownsTask}}
+				<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	      </button>
 				<button class="btn btn-default pull-right" id="completeTask">Mark as completed</button>
 			{{/if}}
 			<p>{{description}}</p>
 			<p><strong>{{pluralize points "point"}}</strong></p>	
 			<p>Allocated to {{allocatedTo}}</p>
+			<p>Deadline for task: {{deadline}}</p>
 		</div>
 </template>

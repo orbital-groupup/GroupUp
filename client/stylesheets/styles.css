@@ -35,3 +35,13 @@
     text-align: center;
     margin: auto;;
 }
+
+.task{
+	position: relative;
+}
+
+.close-task{
+	position: absolute;;
+	top: 0;
+	right: 3px;
+}
