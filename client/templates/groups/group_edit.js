@@ -29,7 +29,7 @@ Template.groupEdit.events({
 			if (error)
 				throwError(error.reason);
 			else
-				Router.go('groupPage', {_id: currentGroupId});
+				Router.go('groupsList');
 		});
 	},
 
