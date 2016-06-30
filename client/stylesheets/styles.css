@@ -66,6 +66,7 @@ html, body {
 }
 
 .highlight{
+	/* highlight from http://cssreset.com/cool-css-effects-realistic-text-highlighting/ */
 	background-image: linear-gradient(-100deg, rgba(255, 255, 255, 0), yellow 85%, rgba(255, 255, 255, 0));
 }
 
