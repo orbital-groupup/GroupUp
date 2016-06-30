@@ -1,44 +1,49 @@
 <template name="unallocatedTask">
-		<div class="well task">
-			<h3>{{title}}</h3>
-			<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-			<button class="btn btn-default pull-right" id="takeTask">Take task</button>
-			<p>{{description}}</p>
-			<p><strong>{{pluralize points "point"}}</strong></p>
-			{{#if isGroupOwner}}
-			<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Allocate</button>
-			{{/if}}
+		<div class="well task unallocated-accordion">
+			<h3>{{title}}<span style="padding-left: 4em"></span>{{pluralize points "point"}}
+				<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
+			        <i class="fa fa-times" aria-hidden="true"></i>
+			    </button>
+			</h3>
+			<div>
+				<h4><strong>{{title}}</strong>	</h4>
+				<button class="btn btn-default pull-right" id="takeTask">Take task</button>
+				{{#if isGroupOwner}}
+				<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal-{{_id}}">Allocate</button>
+				{{/if}}
+				<p>{{description}}</p>
+				<p><strong>{{pluralize points "point"}}</strong></p>
+				
 
-			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			        <h4 class="modal-title" id="myModalLabel">Allocate task</h4>
-			      </div>
-			      <div class="modal-body">
-			      	<h4>Task name: {{title}}</h4>
-			      	<p>Task points: {{points}}</p>
-			        <div class="form-group">
-		            <label for="title">Allocate task to:</label>
-		            <input type="text" id="allocateTo" name="allocateTo" class="form-control" placeholder="Enter a username to allocate task">
-		          </div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" id="allocateToBtn">Submit</button>
-			      </div>
-			    </div>
-			  </div>
+				<!-- Modal -->
+				<div class="modal fade" id="myModal-{{_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				        <h4 class="modal-title" id="myModalLabel">Allocate task</h4>
+				      </div>
+				      <div class="modal-body">
+				      	<h4>Task name: {{title}}</h4>
+				      	<p>Task points: {{points}}</p>
+				        <div class="form-group">
+			            <label for="title">Allocate task to:</label>
+			            <input type="text" id="allocateTo" name="allocateTo" class="form-control" placeholder="Enter a username to allocate task">
+			          </div>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <button type="button" class="btn btn-primary" id="allocateToBtn">Submit</button>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!-- Modal -->
+
+				<p>Added by {{author}} on {{submitted}}</p>
+				<p>Deadline on {{deadline}}</p>
 			</div>
-			<!-- Modal -->
-
-			<p>Added by {{author}} on {{submitted}}</p>
-			<p>Deadline on {{deadline}}</p>
 		</div>
 </template>

@@ -27,6 +27,7 @@ Template.unallocatedTask.events({
 
 	'click button.close-task': function(evt,tpl){
 		evt.preventDefault();
+		evt.stopPropagation();
 		
 		if (Meteor.user().username !== this.author){
 			throwError ('Error: You are not the author of this task.')
@@ -41,7 +42,7 @@ Template.unallocatedTask.events({
 	'click button#allocateToBtn': function(e,t){
 		e.preventDefault();
 		// check if that user is in group at all
-		let allocateTo = $("#myModal").find('[name=allocateTo]').val();
+		let allocateTo = $("#myModal-"+this._id).find('[name=allocateTo]').val();
 		if(_.find(Groups.findOne(this.groupId).members, function(m){ return m.name === allocateTo; } ) ){
 		}
 		else{
@@ -50,6 +51,7 @@ Template.unallocatedTask.events({
 		}
 
 		$('.modal-backdrop').remove();
+		$('body').removeClass('modal-open');
 
 		// let allocateTo = $(e.target).find('[name=allocateTo]').val();
 		
@@ -86,4 +88,8 @@ Template.unallocatedTask.helpers({
 	'isGroupOwner': function(){
 		return Meteor.user().username == Groups.findOne({_id: this.groupId}).author;
 	}
-})
+});
+
+Template.unallocatedTask.onRendered(function(){
+	$(".unallocated-accordion").accordion({ header: "h3", collapsible: true, active: false });
+});
