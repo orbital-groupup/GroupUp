@@ -1,8 +1,8 @@
 <template name="allocatedTask">
 	<div class="well task allocated-accordion">
-			<h3>{{title}}<span style="padding-left: 4em"></span>{{pluralize points "point"}}
+			<h3><strong>{{title}}</strong><span style="padding-left: 4em"></span>{{pluralize points "point"}}
 				{{#if ownsTask}}
-				<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
+				<button type="button" class="close close-task">
 			        <i class="fa fa-times" aria-hidden="true"></i>
 			    </button>
 				{{/if}}

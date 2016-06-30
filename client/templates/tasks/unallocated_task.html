@@ -1,9 +1,11 @@
 <template name="unallocatedTask">
 		<div class="well task unallocated-accordion">
-			<h3>{{title}}<span style="padding-left: 4em"></span>{{pluralize points "point"}}
-				<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
-			        <i class="fa fa-times" aria-hidden="true"></i>
-			    </button>
+			<h3><strong>{{title}}</strong><span style="padding-left: 4em"></span>{{pluralize points "point"}}
+				<div>
+					<button type="button" class="close close-task">
+				        <i class="fa fa-times" aria-hidden="true"></i>
+				    </button>				
+				</div>
 			</h3>
 			<div>
 				<h4><strong>{{title}}</strong>	</h4>

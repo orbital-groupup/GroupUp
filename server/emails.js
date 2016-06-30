@@ -3,7 +3,7 @@ Emails = new Mongo.Collection('emails');
 let ONE_HOUR = 60*1000;
 
 Meteor.startup(function(){
-	sendPendingEmails();
+	//sendPendingEmails();
 	Meteor.setInterval(sendPendingEmails, ONE_HOUR);
 });
 

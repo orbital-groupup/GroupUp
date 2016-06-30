@@ -26,6 +26,7 @@ Template.unallocatedTask.events({
 	},
 
 	'click button.close-task': function(evt,tpl){
+		console.log('x clicked');
 		evt.stopPropagation();
 		evt.preventDefault();
 
@@ -95,5 +96,9 @@ Template.unallocatedTask.helpers({
 });
 
 Template.unallocatedTask.onRendered(function(){
-	$(".unallocated-accordion").accordion({ header: "h3", collapsible: true, active: false });
+	$(".unallocated-accordion").accordion({collapsible: true, active: false });
+	$(".unallocated-accordion > h3").click(function(){
+		console.log('header clicked');
+	});
+
 });
