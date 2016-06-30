@@ -26,16 +26,18 @@ Template.unallocatedTask.events({
 	},
 
 	'click button.close-task': function(evt,tpl){
-		evt.preventDefault();
 		evt.stopPropagation();
+		evt.preventDefault();
+
 		
 		if (Meteor.user().username !== this.author){
 			throwError ('Error: You are not the author of this task.')
 		}
 		else{
-			if (confirm('Remove task from group?')){
-				Meteor.call('taskRemove', this._id);
-			}
+			bootbox.confirm('Remove task from group?', function(res){
+				if (res)
+					Meteor.call('taskRemove', this._id);
+			});
 		}
 	},
 
