@@ -66,6 +66,13 @@ Template.unallocatedTask.events({
 				console.log(error.reason);
 			}
 		});
+		console.log(this);
+
+		Meteor.call('createUserTaskNotification', this, allocateTo, function(err, res){
+			if (err){
+				console.log(err.reason);
+			}
+		});
 
 		let email = Meteor.users.findOne({username: allocateTo}).emails[0].address;
 
