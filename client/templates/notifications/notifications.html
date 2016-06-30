@@ -21,7 +21,8 @@
 	<li>
 		<a href="{{notificationPath}}">
 			<h5>Group: {{groupName}}</h5>
-			<p><strong>{{allocatedBy}}</strong> allocated task <u>{{title}}</u> to <strong>you</strong>.</p>
+			{{#if isTask}}<p><strong>{{allocatedBy}}</strong> allocated task <u>{{title}}</u> to <strong>you</strong>.</p>{{/if}}
+			{{#if isEvent}}<p><strong>{{allocatedBy}}</strong> added a new <u>{{eventItemType}}: {{title}}</u> on {{formattedDate}}</p>{{/if}}
 		</a>
 	</li>
 </template>

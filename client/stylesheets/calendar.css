@@ -39,11 +39,11 @@
   }
 
 .fc-event  p[class="type-Internal Deadline"] {
-    color: blue;
+    color: blue; 
   }
 
 .fc-event  p[class="type-Deadline"] {
-    color: red;
+    color: red; 
   }
 
 .fc-event  p[class="type-Group Meeting"] {

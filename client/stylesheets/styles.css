@@ -33,7 +33,7 @@
     left: 0;
     top: 0;
     text-align: center;
-    margin: auto;;
+    margin: auto;
 }
 
 .task{
@@ -48,4 +48,15 @@
 
 .label-as-badge {
     border-radius: 1em;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v15/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2) format('woff2');
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
 }

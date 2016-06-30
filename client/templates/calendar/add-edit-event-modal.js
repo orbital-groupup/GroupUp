@@ -72,6 +72,12 @@ Template.addEditEventModal.events({
         closeModal();
       }
     });
+
+    Meteor.call('createNewEventNotification', eventItem, function(err, res){
+      if (err){
+        console.log(err.reason);
+      }
+    });
   },
 
   'click .delete-event' ( event, template ) {
