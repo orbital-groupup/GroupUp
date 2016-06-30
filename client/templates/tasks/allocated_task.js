@@ -55,3 +55,7 @@ Template.allocatedTask.events({
 		})
 	}
 });
+
+Template.allocatedTask.onRendered(function(){
+	$(".allocated-accordion").accordion({ header: "h3", collapsible: true, active: false });
+});

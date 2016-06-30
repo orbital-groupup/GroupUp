@@ -1,15 +1,20 @@
 <template name="allocatedTask">
-	<div class="well task">
-			<h3>{{title}}</h3>
+	<div class="well task allocated-accordion">
+			<h3><strong>{{title}}</strong><span style="padding-left: 4em"></span>{{pluralize points "point"}}
+				{{#if ownsTask}}
+				<button type="button" class="close close-task">
+			        <i class="fa fa-times" aria-hidden="true"></i>
+			    </button>
+				{{/if}}
+			</h3>
+			<div>
 			{{#if ownsTask}}
-				<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	      </button>
 				<button class="btn btn-default pull-right" id="completeTask">Mark as completed</button>
 			{{/if}}
 			<p>{{description}}</p>
 			<p><strong>{{pluralize points "point"}}</strong></p>	
 			<p>Allocated to {{allocatedTo}}</p>
 			<p>Deadline for task: {{deadline}}</p>
-		</div>
+			</div>
+	</div>
 </template>

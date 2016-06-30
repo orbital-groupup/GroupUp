@@ -26,22 +26,28 @@ Template.unallocatedTask.events({
 	},
 
 	'click button.close-task': function(evt,tpl){
+		console.log('x clicked');
+		evt.stopPropagation();
 		evt.preventDefault();
+
 		
 		if (Meteor.user().username !== this.author){
 			throwError ('Error: You are not the author of this task.')
 		}
 		else{
-			if (confirm('Remove task from group?')){
-				Meteor.call('taskRemove', this._id);
-			}
+			var that = this;
+			bootbox.confirm('Remove task '+ this.title +' from group?', function(res){
+				if (res){
+					Meteor.call('taskRemove', that._id);
+				}
+			});
 		}
 	},
 
 	'click button#allocateToBtn': function(e,t){
 		e.preventDefault();
 		// check if that user is in group at all
-		let allocateTo = $("#myModal").find('[name=allocateTo]').val();
+		let allocateTo = $("#myModal-"+this._id).find('[name=allocateTo]').val();
 		if(_.find(Groups.findOne(this.groupId).members, function(m){ return m.name === allocateTo; } ) ){
 		}
 		else{
@@ -50,6 +56,7 @@ Template.unallocatedTask.events({
 		}
 
 		$('.modal-backdrop').remove();
+		$('body').removeClass('modal-open');
 
 		// let allocateTo = $(e.target).find('[name=allocateTo]').val();
 		
@@ -57,6 +64,13 @@ Template.unallocatedTask.events({
 			if (error){
 				throwError(error.reason);
 				console.log(error.reason);
+			}
+		});
+		console.log(this);
+
+		Meteor.call('createUserTaskNotification', this, allocateTo, function(err, res){
+			if (err){
+				console.log(err.reason);
 			}
 		});
 
@@ -86,4 +100,12 @@ Template.unallocatedTask.helpers({
 	'isGroupOwner': function(){
 		return Meteor.user().username == Groups.findOne({_id: this.groupId}).author;
 	}
-})
+});
+
+Template.unallocatedTask.onRendered(function(){
+	$(".unallocated-accordion").accordion({collapsible: true, active: false });
+	$(".unallocated-accordion > h3").click(function(){
+		console.log('header clicked');
+	});
+
+});

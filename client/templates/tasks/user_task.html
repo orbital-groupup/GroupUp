@@ -1,13 +1,17 @@
 <template name="userTask">
-	<div class="well task">
-			<h3>{{title}}</h3>
-			<button type="button" class="close close-task" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	    </button>
-			<button class="btn btn-default pull-right" id="completeTask">Mark as completed</button>
-			<p>{{description}}</p>
-			<p><strong>{{pluralize points "point"}}</strong></p>	
-			<p>Allocated to <strong>you</strong></p>
-			<p>Deadline for task: {{deadline}}</p>
+	<div class="well task usertask-accordion">
+			<h3><strong>{{title}}</strong><span style="padding-left: 4em"></span>{{pluralize points "point"}}
+				<button type="button" class="close close-task">
+			        <i class="fa fa-times" aria-hidden="true"></i>
+			    </button>
+
+			</h3>
+			<div>
+				<button class="btn btn-default pull-right" id="completeTask">Mark as completed</button>
+				<p>{{description}}</p>
+				<p><strong>{{pluralize points "point"}}</strong></p>	
+				<p>Allocated to <strong>you</strong></p>
+				<p>Deadline for task: {{deadline}}</p>
+			</div>
 	</div>
 </template>

@@ -19,15 +19,18 @@ Template.groupPage.helpers({
 Template.groupPage.events({
 	'click button#autoAllocate': function(e){
 		e.preventDefault();
-		if (confirm('Auto allocate all available tasks to group members?')){
+		var that = this;
+		bootbox.confirm('Auto allocate all available tasks to group members?', function(res){
+			if (res){
+				var tasks = Tasks.find({allocatedTo: ''}).fetch();
+				var groupId = that._id;
 
-			var tasks = Tasks.find({allocatedTo: ''}).fetch();
-			var groupId = this._id;
+				Meteor.call('autoAllocateTasks', tasks, groupId, function(error){
+					if (error)
+						throwError(error.reason);
+				});
+			}	
+		});
 
-			Meteor.call('autoAllocateTasks', tasks, groupId, function(error){
-				if (error)
-					throwError(error.reason);
-			});
-		}
 	}
 });

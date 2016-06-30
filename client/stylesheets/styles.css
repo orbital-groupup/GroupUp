@@ -33,7 +33,7 @@
     left: 0;
     top: 0;
     text-align: center;
-    margin: auto;;
+    margin: auto;
 }
 
 .task{
@@ -41,7 +41,38 @@
 }
 
 .close-task{
-	position: absolute;;
-	top: 0;
-	right: 3px;
+	position: absolute;
+	top: 7px;
+	right: 5px;
+}
+
+.label-as-badge {
+    border-radius: 1em;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v15/oMMgfZMQthOryQo9n22dcuvvDin1pK8aKteLpeZ5c0A.woff2) format('woff2');
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.my-margin-auto{
+	margin:auto;
+}
+
+.highlight{
+	/* highlight from http://cssreset.com/cool-css-effects-realistic-text-highlighting/ */
+	background-image: linear-gradient(-100deg, rgba(255, 255, 255, 0), yellow 85%, rgba(255, 255, 255, 0));
+}
+
+.notification-bg{
+/* bg color from uigradients.com */
+    opacity: 1;
+    background-image: linear-gradient(to left, rgb(221, 94, 137), rgb(247, 187, 151));
+    background-color: rgb(247, 187, 151);
 }

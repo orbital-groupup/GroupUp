@@ -94,7 +94,7 @@ Template.events.onRendered( () => {
           start: date,
           owner: event.owner,
           auto: false,
-          end: date
+          end: event.end.format()
         };
 
         Meteor.call( 'editEvent', update, ( error ) => {
