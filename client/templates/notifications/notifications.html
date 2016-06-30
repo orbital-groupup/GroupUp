@@ -6,21 +6,21 @@
 		{{/if}}
 		<b class="caret"></b>
 	</a>
-	<ul class="notification dropdown-menu">
+	<ul class="notification dropdown-menu notification-bg">
 		{{#if notificationCount}}
 			{{#each notifications}}
 				{{> notificationItem}}
 			{{/each}}
 		{{else}}
-			<li><span>No Notifications</span></li>
+			<li><span><p style="text-align: center; margin: auto">No Notifications</p></span></li>
 		{{/if}}
 	</ul>
 </template>
 
 <template name="notificationItem">
-	<li>
+	<li class="notification-bg">
 		<a href="{{notificationPath}}">
-			<h5>Group: {{groupName}}</h5>
+			<h4 class="my-margin-auto highlight">Group: {{groupName}}</h4>
 			{{#if isTask}}<p><strong>{{allocatedBy}}</strong> allocated task <u>{{title}}</u> to <strong>you</strong>.</p>{{/if}}
 			{{#if isEvent}}<p><strong>{{allocatedBy}}</strong> added a new <u>{{eventItemType}}: {{title}}</u> on {{formattedDate}}</p>{{/if}}
 		</a>

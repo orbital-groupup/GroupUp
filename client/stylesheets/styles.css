@@ -60,3 +60,18 @@
 html, body {
   font-family: 'Roboto', sans-serif;
 }
+
+.my-margin-auto{
+	margin:auto;
+}
+
+.highlight{
+	background-image: linear-gradient(-100deg, rgba(255, 255, 255, 0), yellow 85%, rgba(255, 255, 255, 0));
+}
+
+.notification-bg{
+/* bg color from uigradients.com */
+    opacity: 1;
+    background-image: linear-gradient(to left, rgb(221, 94, 137), rgb(247, 187, 151));
+    background-color: rgb(247, 187, 151);
+}
