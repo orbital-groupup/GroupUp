@@ -34,7 +34,7 @@ Template.unallocatedTask.events({
 			throwError ('Error: You are not the author of this task.')
 		}
 		else{
-			bootbox.confirm('Remove task from group?', function(res){
+			bootbox.confirm('Remove task '+ this.title +' from group?', function(res){
 				if (res)
 					Meteor.call('taskRemove', this._id);
 			});
