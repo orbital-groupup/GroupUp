@@ -50,3 +50,7 @@ Template.userTask.events({
 		})
 	}
 });
+
+Template.userTask.onRendered(function(){
+	$(".usertask-accordion").accordion({ header: "h3", collapsible: true, active: false });
+});
