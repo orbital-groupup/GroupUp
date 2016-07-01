@@ -36,3 +36,5 @@ email
 tsega:bootstrap3-datetimepicker
 mizzao:jquery-ui
 mizzao:bootboxjs
+tomi:upload-server
+tomi:upload-jquery
