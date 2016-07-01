@@ -16,6 +16,6 @@ Meteor.publish('items', function() {
   return Items.find();
 });
 
-Meteor.publish('uploads', function() {
-  return Uploads.find();
+Meteor.publish('uploads', function(groupId) {
+  return Uploads.find({groupId: groupId});
 })
