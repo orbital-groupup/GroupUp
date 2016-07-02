@@ -17,8 +17,11 @@ Template['uploadedInfo'].helpers({
 
 Template['uploadedInfo'].events({
   'click .deleteUpload':function() {
-    if (confirm('Are you sure?')) {
-      Meteor.call('deleteFile', this._id);
-    }
+    var that = this;
+    bootbox.confirm('Delete ' + this.name +' from group?', function(res){
+      if (res){
+        Meteor.call('deleteFile', that._id);
+      }
+    });
   }
 })
