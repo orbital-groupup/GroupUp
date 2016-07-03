@@ -4,11 +4,14 @@
 			<div class="caption">
 				<h3>
 					{{title}}
-					{{#if ownGroup}}
-						<a href="{{pathFor 'groupEdit'}}">Edit</a>
-					{{/if}}
 				</h3>
+				{{#if ownGroup}}
+                <p>
+                    You are the Group Leader.
+                </p>
+          		{{else}}
 				<p>Group Leader: {{author}}</p>
+				{{/if}}
 				<div class="dropdown">
 				  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 				    Members: {{members.length}}

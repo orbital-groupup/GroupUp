@@ -1,0 +1,39 @@
+<template name="sidebar">       
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+          <li class="sidebar-brand"> <a href="{{pathFor 'groupPage'}}">
+                            {{title}}
+                        </a>
+
+          </li>
+            {{#if ownGroup}}
+                <li>
+                    <a href="{{pathFor 'groupEdit'}}">Settings</a>
+                </li>
+            {{/if}}
+          <li> <a href="{{pathFor 'events'}}">Calendar</a>
+          </li>
+        </ul>
+      </div>
+      <!-- /#sidebar-wrapper -->
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12">
+
+              <a href="#menu-toggle" id="menu-toggle">
+                  <i class="fa fa-exchange" aria-hidden="true"> {{title}}</i>
+              </a>
+              <hr>
+              {{> yield}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+</template> 

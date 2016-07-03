@@ -1,14 +1,19 @@
 <template name="groupEdit">
 	<form class="main form page">
 		<div class="form-group {{errorClass 'title'}}">
-			<label class="control-label" for="title">Title</label>
+			<label class="control-label" for="title">Change Group Name</label>
 			<div class="controls">
 				<input name="title" id="title" type="text" value="{{title}}" placeholder="Name your group" class="form-control">
 				<span class="help-block">{{errorMessage 'title'}}</span>
 			</div>
 		</div>
-		<input type="submit" value="Submit" class="btn btn-primary submit">
+		<input type="submit" value="Save changes" class="btn btn-primary submit">
 		<hr>
+		<p>Add/Remove members</p>
+		<p>Group Profile Picture</p>
+		<p>Other admin settings here</p>
+		<hr>
+		<h3>Warning: This is irreversible.</h3>
 		<a class="btn btn-danger delete" href="#">Delete Group</a>
 	</form>
 </template>
