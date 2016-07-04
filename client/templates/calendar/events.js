@@ -65,6 +65,7 @@ Template.events.onRendered( () => {
     },
 
     eventResize(event, delta, revert){
+      console.log(event);
       let date=event.start.format();
       if (!isPast(date) && !event.auto){
         let update={
@@ -87,6 +88,7 @@ Template.events.onRendered( () => {
     },
 
     eventDrop( event, delta, revert ) {
+      console.log(event);
       let date = event.start.format();
       if ( !isPast( date ) && !event.auto) {
         let update = {
