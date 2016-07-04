@@ -9,7 +9,8 @@ Meteor.methods({
       dow: Match.Optional(Array),
       auto: Boolean,
       weekType: Match.Optional(String),
-      owner: String
+      owner: String,
+      userId: String
     });
 
     try {
@@ -32,7 +33,8 @@ Meteor.methods({
       dow: Match.Optional(Array),
       weekType: Match.Optional(String),
       auto: Boolean,
-      owner: String
+      owner: String,
+      userId: String
     });
 
     try {

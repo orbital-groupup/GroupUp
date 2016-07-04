@@ -57,7 +57,8 @@ Template.addEditEventModal.events({
           groupId: Router.current().params._id,
           weekType: 'None',
           auto: false,
-          owner: Meteor.user().username
+          owner: Meteor.user().profile.name,
+          userId: Meteor.userId()
         };
 
     if ( submitType === 'editEvent' ) {

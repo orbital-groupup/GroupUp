@@ -23,12 +23,12 @@ var sendPendingEmails = function(){
 }
 
 Meteor.methods({
-	'insertEmail': function(email, reminder, taskId){
-		check(email, String);
+	'insertEmail': function(userId, reminder, taskId){
+		check(userId, String);
 		check(reminder, Date);
 		
 		Emails.insert({
-			email: email,
+			email:  Meteor.users.findOne({_id: userId}).emails[0].address,
 			emailAt: reminder,
 			taskId: taskId
 		});

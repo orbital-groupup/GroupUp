@@ -1,4 +1,18 @@
 Accounts.onCreateUser(function(options,user){
+	if (user.services.password){
+		user.profile = {};
+		user.profile.name = options.profile['first-name'] + " " + options.profile['last-name'];
+	}
+	else if (user.services.facebook){
+		user.profile = {};
+		user.profile.name = user.services.facebook.name;
+		user.emails = [];
+		user.emails.push({
+			address: user.services.facebook.email,
+			verified: true
+		});
+	}
+
 	if (options.email){
 		Meteor.setTimeout(function(){
 			Accounts.sendVerificationEmail(user._id);

@@ -72,6 +72,7 @@ Template.events.onRendered( () => {
           _id: event._id,
           start: date,
           owner: event.owner,
+          userId: event.userId,
           auto: false,
           end: event.end.format()
         };
@@ -94,6 +95,7 @@ Template.events.onRendered( () => {
         let update = {
           _id: event._id,
           start: date,
+          userId: event.userId,
           owner: event.owner,
           auto: false,
           end: event.end.format()
