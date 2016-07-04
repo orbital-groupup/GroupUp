@@ -3,17 +3,19 @@
       <!-- Sidebar -->
       <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-          <li class="sidebar-brand"> <a href="{{pathFor 'groupPage'}}">
+          <li class="sidebar-brand"> <a href="{{pathFor 'groupPage' data=myData}}">
                             {{title}}
                         </a>
 
           </li>
             {{#if ownGroup}}
                 <li>
-                    <a href="{{pathFor 'groupEdit'}}">Settings</a>
+                    <a href="{{pathFor 'groupEdit' data=myData}}">Settings</a>
                 </li>
             {{/if}}
-          <li> <a href="{{pathFor 'events'}}">Calendar</a>
+          <li> <a href="{{pathFor 'events' data=myData}}">Calendar</a>
+          </li>
+          <li> <a href="{{pathFor 'fileUpload' data=myData}}">Uploads</a>
           </li>
         </ul>
       </div>

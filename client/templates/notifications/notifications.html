@@ -23,6 +23,7 @@
 			<h4 class="my-margin-auto highlight">Group: {{groupName}}</h4>
 			{{#if isTask}}<p><strong>{{allocatedBy}}</strong> allocated task <u>{{title}}</u> to <strong>you</strong>.</p>{{/if}}
 			{{#if isEvent}}<p><strong>{{allocatedBy}}</strong> added a new <u>{{eventItemType}}: {{title}}</u> on {{formattedDate}}</p>{{/if}}
+			{{#if isUpload}}<p>New file <strong>{{title}}</strong> uploaded to your group {{groupName}}</p>{{/if}}
 		</a>
 	</li>
 </template>

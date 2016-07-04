@@ -9,7 +9,10 @@ Template.notifications.helpers({
 
 Template.notificationItem.helpers({
 	notificationPath: function(){
-		return Router.routes.groupPage.path({_id: this.groupId});
+		if (this.type==="upload")
+			return Router.routes.fileUpload.path({_id: this.groupId});
+		else
+			return Router.routes.groupPage.path({_id: this.groupId});
 	},
 
 	isEvent: function(){
@@ -18,6 +21,10 @@ Template.notificationItem.helpers({
 
 	isTask: function(){
 		return this.type==="task";
+	},
+
+	isUpload: function(){
+		return this.type==="upload";
 	},
 
 	formattedDate: function(){
