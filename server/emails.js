@@ -1,6 +1,6 @@
 Emails = new Mongo.Collection('emails');
 
-let ONE_HOUR = 60*1000;
+let ONE_HOUR = 60*60*1000;
 
 Meteor.startup(function(){
 	//sendPendingEmails();
