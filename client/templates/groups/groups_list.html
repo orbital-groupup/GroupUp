@@ -1,9 +1,39 @@
 <template name="groupsList">
 	<div class="jumbotron">
-	  <h1>This is your Groups page!</h1>
-	  <p>Create a group, or join one. Return to here anytime by clicking on the GroupUp brand.</p>
+	  <h1>This is your Groups Page!</h1>
+	  <p>Create a group, or join one.</p>
 	  <p>
-	  	<a class="btn btn-success btn-lg" href="{{pathFor 'groupSubmit'}}" role="button">Create new Group</a>
+	  	<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#groupSubmitModal">Create Group</button>
+
+	  		<!-- groupSubmitModal -->
+			<div class="modal fade" id="groupSubmitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			        <h4 class="modal-title" id="myModalLabel">Create Group</h4>
+			      </div>
+			      <div class="modal-body">
+			      	<div class="form-group">
+						<label class="control-label" for="title">Name your new Group!</label>
+						<div class="controls">
+							<input name="title" id="title" type ="text"  placeholder="Best Group In The World" class="form-control">
+							<span class="help-block"></span>
+						</div>
+					</div>
+		          </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="button" class="btn btn-primary" id="groupSubmitBtn">Submit</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!-- groupSubmitModal -->
+
+
 	  	<a class="btn btn-primary btn-lg" href="{{pathFor 'joinGroup'}}" role="button">Join a Group</a>
 	  </p>
 	</div>
