@@ -1,0 +1,29 @@
+<template name="notifications">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		Notifications
+		{{#if notificationCount}}
+			<span class="label label-danger label-as-badge">{{notificationCount}}</span>
+		{{/if}}
+		<b class="caret"></b>
+	</a>
+	<ul class="notification dropdown-menu notification-bg">
+		{{#if notificationCount}}
+			{{#each notifications}}
+				{{> notificationItem}}
+			{{/each}}
+		{{else}}
+			<li><span><p style="text-align: center; margin: auto">No Notifications</p></span></li>
+		{{/if}}
+	</ul>
+</template>
+
+<template name="notificationItem">
+	<li class="notification-bg">
+		<a href="{{notificationPath}}">
+			<h4 class="my-margin-auto highlight">Group: {{groupName}}</h4>
+			{{#if isTask}}<p><strong>{{allocatedBy}}</strong> allocated task <u>{{title}}</u> to <strong>you</strong>.</p>{{/if}}
+			{{#if isEvent}}<p><strong>{{allocatedBy}}</strong> added a new <u>{{eventItemType}}: {{title}}</u> on {{formattedDate}}</p>{{/if}}
+			{{#if isUpload}}<p>New file <strong>{{title}}</strong> uploaded to your group {{groupName}}</p>{{/if}}
+		</a>
+	</li>
+</template>

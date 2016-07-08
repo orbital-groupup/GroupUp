@@ -1,8 +1,6 @@
 <template name='groupPage'>
 	<div class="group">
 		<div class="group-content">
-			<h1>{{title}}</h1>
-			<a href="{{pathFor 'events'}}">Group Calendar</a>
 		</div>
 		<div class="text-right">
 			<button class="btn btn-default" id="autoAllocate">Auto-allocate available tasks</button>
@@ -17,7 +15,6 @@
 					{{#each unallocatedTasks}}
 						{{> unallocatedTask}}
 					{{/each}}
-
 				{{else}}
 					<p>No unallocated tasks currently available. Add a new task now!</p>
 				{{/if}}

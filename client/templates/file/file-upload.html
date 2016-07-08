@@ -1,0 +1,30 @@
+<template name="fileUpload">
+    <a href="{{pathFor 'groupPage'}}">Back to group page</a>
+    {{> upload_bootstrap multi=true}}
+    {{> dropzone}}
+
+    <div class="panel">
+        <h3>Uploaded Following Files</h3>
+        <p>
+            {{> uploadedInfo uploads }}
+        </p>
+    </div>
+</template>
+
+<template name="uploadedInfo">
+    <div class="documentList">
+        <ul class="list-inline">
+            {{#each this}}
+                <li class="documentItem">
+                    <a href="/upload/{{path}}"><img src="{{src}}"></a><br/>
+                    <label>{{ name }}</label> <br/>
+                    {{ size }} B<br>
+                    {{#if _id}}
+                        <a class="btn btn-danger deleteUpload">Delete</a>
+                    {{/if}}
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</template>
+
