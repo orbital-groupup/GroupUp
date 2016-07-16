@@ -84,6 +84,7 @@ momentjs:moment@2.14.1
 mongo@1.1.9_1
 mongo-id@1.0.5
 msavin:jetsetter@2.0.0
+nilsdannemann:pdfmake@1.0.38
 npm-bcrypt@0.8.7
 npm-mongo@1.4.44_1
 oauth@1.1.11
