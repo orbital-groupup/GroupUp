@@ -45,23 +45,23 @@ meteor --settings settings.json
 			"username" : "your_email_username",
 			"password": "your_email_password",
 			"server": "your_smtp_server",
-			"port": "your_smtp_port"
+			"port": your_smtp_port
 		},
 		"oauth-fb": {
 			"appId": "your_app_id",
-			"secret": "you_app_secret"
+			"secret": "your_app_secret"
 		},
 		"oauth-github":{
 			"clientId": "your_app_id",
-			"secret": "you_app_secret"
+			"secret": "your_app_secret"
 		},
 		"oauth-google":{
 			"clientId": "your_app_id",
-       		"secret": "you_app_secret-"
+       		"secret": "your_app_secret"
 		},
 		"oauth-twitter":{
 			"consumerKey": "your_app_id",
-      	    "secret": "you_app_secret"
+      	    "secret": "your_app_secret"
 		}
 	}
 }
