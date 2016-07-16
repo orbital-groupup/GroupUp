@@ -10,7 +10,7 @@ Template.groupsList.helpers({
 		return !!Session.get('groupSubmitErrors')[field]? 'has-error': '';
 	},
 	groups: function() {
-		return Groups.find({ "members.name": Meteor.user().username});
+		return Groups.find({ "members.userId": Meteor.userId()});
 	}
 });
 

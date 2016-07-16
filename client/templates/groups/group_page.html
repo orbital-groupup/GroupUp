@@ -40,8 +40,8 @@
 			<ol>
 			<h2><u>Leaderboard</u></h2>
 			{{#each members}}
-				<li>{{name}}<span style="padding-left: 4em"></span>{{pluralize actualPoints "point"}} </li>
-				<!-- <span style="padding-left: 4em">Expected {{pluralize expectedPoints "point"}}</span></li> -->
+				<li>{{name}}<span style="padding-left: 4em"></span>{{pluralize actualPoints "point"}} <span style="padding-left: 4em">Expected {{pluralize expectedPoints "point"}}</span> </li>
+				
 			{{/each}}
 			</ol>
 		</div>

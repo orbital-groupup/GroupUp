@@ -1,0 +1,23 @@
+<template name="userEdit">
+	<h1>Settings</h1>
+	<h3>Link OAuth Accounts</h3>
+	<button class="link-fb">Link Facebook Account</button><br>
+	<button class="link-github">Link Github Account</button><br>
+	<button class="link-google">Link Google Account</button><br>
+	<button class="link-twitter">Link Twitter Account</button>
+
+	<h3>Services associated with current user.</h3>
+	<ul>
+		{{#each services}}
+			<li>{{this}}</li>
+		{{/each}}
+	</ul>
+
+	{{#if services}}
+		<h4>Unlink services from current user account</h4>
+		<button class="unlink-fb">Unlink Facebook Account</button>
+		<button class="unlink-github">Unlink Github Account</button>
+		<button class="unlink-google">Unlink Google Account</button>
+		<button class="unlink-twitter">Unlink Twitter Account</button>
+	{{/if}}
+</template>

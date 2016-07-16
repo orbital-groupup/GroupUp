@@ -65,12 +65,14 @@ Template.events.onRendered( () => {
     },
 
     eventResize(event, delta, revert){
+      console.log(event);
       let date=event.start.format();
       if (!isPast(date) && !event.auto){
         let update={
           _id: event._id,
           start: date,
           owner: event.owner,
+          userId: event.userId,
           auto: false,
           end: event.end.format()
         };
@@ -87,11 +89,13 @@ Template.events.onRendered( () => {
     },
 
     eventDrop( event, delta, revert ) {
+      console.log(event);
       let date = event.start.format();
       if ( !isPast( date ) && !event.auto) {
         let update = {
           _id: event._id,
           start: date,
+          userId: event.userId,
           owner: event.owner,
           auto: false,
           end: event.end.format()

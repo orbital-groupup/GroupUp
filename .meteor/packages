@@ -38,3 +38,9 @@ mizzao:jquery-ui
 mizzao:bootboxjs
 tomi:upload-server
 tomi:upload-jquery
+accounts-facebook
+service-configuration
+bozhao:link-accounts
+accounts-github
+accounts-google
+accounts-twitter

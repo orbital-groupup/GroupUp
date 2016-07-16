@@ -2,12 +2,12 @@ Template.unallocatedTask.events({
 	'click button#takeTask': function(e){
 		e.preventDefault();
 
-		Tasks.update({_id: this._id}, {$set: {allocatedTo: Meteor.user().username}}, function(error){
+		Tasks.update({_id: this._id}, {$set: {allocatedTo: {name: Meteor.user().profile.name, userId: Meteor.userId()}}}, function(error){
 			if (error)
 				throwError(error.reason);
 		});
 
-		Meteor.call('insertEmail', Meteor.user().emails[0].address, this.reminder, this._id, function(err, res){
+		Meteor.call('insertEmail', Meteor.userId(), this.reminder, this._id, function(err, res){
 			if (err)
 				throwError(err.reason);
 			else
@@ -18,8 +18,9 @@ Template.unallocatedTask.events({
 			groupId: this.groupId,
 			points: this.points
 		}
+		var allocatedTo = Meteor.userId();
 
-		Meteor.call('updateExpectedPoints', group, function(error){
+		Meteor.call('updateExpectedPoints', group, allocatedTo, function(error){
 			if (error)
 				throwError(error.reason);
 		})
@@ -31,7 +32,7 @@ Template.unallocatedTask.events({
 		evt.preventDefault();
 
 		
-		if (Meteor.user().username !== this.author){
+		if (Meteor.userId() !== this.userId){
 			throwError ('Error: You are not the author of this task.')
 		}
 		else{
@@ -48,9 +49,8 @@ Template.unallocatedTask.events({
 		e.preventDefault();
 		// check if that user is in group at all
 		let allocateTo = $("#myModal-"+this._id).find('[name=allocateTo]').val();
-		if(_.find(Groups.findOne(this.groupId).members, function(m){ return m.name === allocateTo; } ) ){
-		}
-		else{
+		var found = _.find(Groups.findOne(this.groupId).members, function(m){ return m.name === allocateTo; });
+		if(!found){
 		 	throwError ('Member not found')
 		 	return;
 		}
@@ -60,23 +60,21 @@ Template.unallocatedTask.events({
 
 		// let allocateTo = $(e.target).find('[name=allocateTo]').val();
 		
-		Tasks.update({_id: this._id}, {$set: {allocatedTo: allocateTo}}, function(error){
+		Tasks.update({_id: this._id}, {$set: {allocatedTo: {name: found.name, userId: found.userId}}}, function(error){
 			if (error){
 				throwError(error.reason);
 				console.log(error.reason);
 			}
 		});
-		console.log(this);
 
-		Meteor.call('createUserTaskNotification', this, allocateTo, function(err, res){
+		Meteor.call('createUserTaskNotification', this, found.userId, function(err, res){
 			if (err){
 				console.log(err.reason);
 			}
 		});
+		// let email = Meteor.users.findOne({_id: found.userId}).emails[0].address;
 
-		let email = Meteor.users.findOne({username: allocateTo}).emails[0].address;
-
-		Meteor.call('insertEmail', email, this.reminder, this._id, function(err, res){
+		Meteor.call('insertEmail', found.userId, this.reminder, this._id, function(err, res){
 			if (err)
 				throwError(err.reason);
 			else
@@ -88,7 +86,7 @@ Template.unallocatedTask.events({
 			points: this.points
 		}
 
-		Meteor.call('updateExpectedPoints', group, function(error){
+		Meteor.call('updateExpectedPoints', group, found.userId, function(error){
 			if (error)
 				throwError(error.reason);
 		});
@@ -98,7 +96,13 @@ Template.unallocatedTask.events({
 
 Template.unallocatedTask.helpers({
 	'isGroupOwner': function(){
-		return Meteor.user().username == Groups.findOne({_id: this.groupId}).author;
+		return Meteor.userId() == Groups.findOne({_id: this.groupId}).userId;
+	},
+	'niceDate': function(){
+		return moment(this.deadline).format('MMMM Do YYYY, h:mm:ss a');
+	},
+	'niceDateAdded': function(){
+		return moment(this.submitted).format('MMMM Do YYYY, h:mm:ss a');
 	}
 });
 

@@ -31,7 +31,7 @@ Template.addEditEventModal.helpers({
     if ( eventModal ) {
       return eventModal.type === 'edit' ? Events.findOne( eventModal.event ) : {
         start: eventModal.date,
-        end: eventModal.date
+        end: moment(eventModal.date).add(2, 'h').format()
       };
     }
   }
@@ -57,7 +57,8 @@ Template.addEditEventModal.events({
           groupId: Router.current().params._id,
           weekType: 'None',
           auto: false,
-          owner: Meteor.user().username
+          owner: Meteor.user().profile.name,
+          userId: Meteor.userId()
         };
 
     if ( submitType === 'editEvent' ) {

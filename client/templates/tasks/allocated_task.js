@@ -1,6 +1,9 @@
 Template.allocatedTask.helpers({
 	'ownsTask': function(){
-		return this.allocatedTo === Meteor.user().username;
+		return this.allocatedTo.userId === Meteor.userId();
+	},
+	'niceDate': function(){
+		return moment(this.deadline).format('MMMM Do YYYY, h:mm:ss a');
 	}
 });
 
@@ -32,7 +35,7 @@ Template.allocatedTask.events({
 	'click button.close-task': function(e,t){
 		e.preventDefault();
 
-		Tasks.update({_id: this._id}, {$set: {allocatedTo: ""}}, function(error){
+		Tasks.update({_id: this._id}, {$set: {allocatedTo: {name: '', userId: ''}}}, function(error){
 			if (error)
 				throwError(error.reason);
 		});
@@ -49,7 +52,7 @@ Template.allocatedTask.events({
 			points: -1 * this.points
 		}
 
-		Meteor.call('updateExpectedPoints', group, function(error){
+		Meteor.call('updateExpectedPoints', group, Meteor.userId(), function(error){
 			if (error)
 				throwError(error.reason);
 		})
