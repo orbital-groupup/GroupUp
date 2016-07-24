@@ -9,9 +9,16 @@ Template.userTask.events({
 		e.preventDefault();
 
 		// update completed flag to true
+		/*
 		Tasks.update({_id: this._id}, {$set: {completed: true}}, function(error){
 			if (error)
 				throwError(error.reason);
+		});
+		*/
+
+		Meteor.call('completeTask', this._id, function(err, res){
+			if (err)
+				console.log('completeTask has an error', err);
 		});
 
 		// add points to the user in group
