@@ -74,3 +74,90 @@ Template.report.events({
 		pdfMake.createPdf(docDefinition).open();
 	}
 });
+
+Template.report.onRendered(function(){
+	var self = this;
+
+	function data() {
+		var groupTasks = Tasks.find({groupId: self.data.group._id, completed: true}).fetch();
+		var myMap = new Map();
+		_.each(groupTasks, function(task){
+			task.dateCompleted.setHours(0,0,0,0);
+
+			if (myMap.has(task.dateCompleted.getTime()))
+				myMap.set(task.dateCompleted.getTime(), myMap.get(task.dateCompleted.getTime())+1);
+			else
+				myMap.set(task.dateCompleted.getTime(), 1);
+		});
+		var theData = Array.from(myMap.entries()).map(function(curr) {return {x: curr[0], y: curr[1]}});
+		return [{
+			values: theData,
+			key: 'Activity',
+			color: '#ff7f0e'
+		}]
+
+
+	/*
+	  var sin = [],
+	      cos = [];
+
+	  for (var i = 0; i < 100; i++) {
+	    sin.push({x: i, y: Math.sin(i/10)});
+	    cos.push({x: i, y: .5 * Math.cos(i/10)});
+	  }
+
+	  return [
+	    {
+	      values: sin,
+	      key: 'Sine Wave',
+	      color: '#ff7f0e'
+	    },
+	    {
+	      values: cos,
+	      key: 'Cosine Wave',
+	      color: '#2ca02c'
+	    }
+	  ];
+	*/
+	/*
+	var theData = _.map(self.data.group.members, function(member){
+			return {
+				values: groupTasks.filter(task => task.userId === member.userId).map(task=>{x: dateCompleted, y: })
+			}
+		});
+
+	*/
+	};
+	
+
+
+	nv.addGraph(function() {
+	  var chart = nv.models.lineChart()
+	    .useInteractiveGuideline(true)
+	    ;
+
+	  chart.xAxis
+	    .axisLabel('Date')
+	    //.tickFormat(d3.format(',r'))
+	    .tickFormat(function(d){
+	    	return d3.time.format('%x')(new Date(d))
+	    })
+	    ;
+
+	  chart.yAxis
+	    .axisLabel('Activity Count')
+	    .tickFormat(d3.format('d'))
+	    ;
+
+	  d3.select('#groupActivityChart svg')
+	    .datum(data())
+	    .transition().duration(500)
+	    .call(chart)
+	    ;
+
+	  nv.utils.windowResize(chart.update);
+
+	  return chart;
+	});
+
+})

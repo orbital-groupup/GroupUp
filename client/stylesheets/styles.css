@@ -83,3 +83,7 @@ html, body {
 	font-size: 3.5em;
 	color: black;
 }
+
+#groupActivityChart svg {
+  height: 400px;
+}
