@@ -123,7 +123,7 @@ Template.report.onRendered(function(){
 
 	nv.addGraph(function() {
 	  var chart = nv.models.lineChart()
-	    .useInteractiveGuideline(true)
+	    .useInteractiveGuideline(false)
 	    ;
 
 	  chart.xAxis
@@ -141,11 +141,15 @@ Template.report.onRendered(function(){
 	    .tickFormat(d3.format('d'))
 	    ;
 
+	  chart.padData(true);
+
+
 	  d3.select('#groupActivityChart svg')
 	    .datum(groupActivityData())
 	    .transition().duration(500)
 	    .call(chart)
 	    ;
+
 
 	  nv.utils.windowResize(chart.update);
 
