@@ -20,11 +20,11 @@ Group projects are very common in many areas of life, yet people struggle with g
 - [x] As a leader of a group, I need to be able to keep track of the group’s schedule so that I can find an appropriate time slot to conduct a group meeting. To do this, the system should allow me to view the entire group’s calendar and identify time slots where all members are available.
 
 ## Milestone 3 User Stories
-- [ ] As a member of a group, I need to communicate easily with other members of the group. To do this, the system should allow me to chat directly to other members in the group.
+- [x] As a member of a group, I need to communicate easily with other members of the group. To do this, the system should allow me to chat directly to other members in the group.
 
-- [ ] As a member of a group, I need to know if my group is on pace to completing the project. To do this, the system should allow me to visualize the progress of the project through graph and analytics.
+- [x] As a member of a group, I need to know if my group is on pace to completing the project. To do this, the system should allow me to visualize the progress of the project through graph and analytics.
 
-- [ ] As a project grader, I am interested in knowing the different contributions of group members in the project in order to determine whether all members of the group deserve to be graded equally. To do this, the system should be able to generate a summary of the work done by each individual in the group.
+- [x] As a project grader, I am interested in knowing the different contributions of group members in the project in order to determine whether all members of the group deserve to be graded equally. To do this, the system should be able to generate a summary of the work done by each individual in the group.
 
 ## Project Log
 ```
