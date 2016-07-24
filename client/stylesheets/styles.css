@@ -87,3 +87,7 @@ html, body {
 #groupActivityChart svg {
   height: 400px;
 }
+
+#memberPie svg {
+  height: 400px;
+}

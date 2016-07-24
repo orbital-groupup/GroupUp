@@ -76,10 +76,10 @@ Template.report.events({
 });
 
 Template.report.onRendered(function(){
-	var self = this;
+	var groupTasks = Tasks.find({groupId: this.data.group._id, completed: true}).fetch();
+	var thisGroup = this.data.group;
 
-	function data() {
-		var groupTasks = Tasks.find({groupId: self.data.group._id, completed: true}).fetch();
+	function groupActivityData() {
 		var myMap = new Map();
 		_.each(groupTasks, function(task){
 			task.dateCompleted.setHours(0,0,0,0);
@@ -96,29 +96,6 @@ Template.report.onRendered(function(){
 			color: '#ff7f0e'
 		}]
 
-
-	/*
-	  var sin = [],
-	      cos = [];
-
-	  for (var i = 0; i < 100; i++) {
-	    sin.push({x: i, y: Math.sin(i/10)});
-	    cos.push({x: i, y: .5 * Math.cos(i/10)});
-	  }
-
-	  return [
-	    {
-	      values: sin,
-	      key: 'Sine Wave',
-	      color: '#ff7f0e'
-	    },
-	    {
-	      values: cos,
-	      key: 'Cosine Wave',
-	      color: '#2ca02c'
-	    }
-	  ];
-	*/
 	/*
 	var theData = _.map(self.data.group.members, function(member){
 			return {
@@ -127,6 +104,19 @@ Template.report.onRendered(function(){
 		});
 
 	*/
+	};
+
+	function memberPieData(){
+
+		return thisGroup.members.map(function(m){
+			return {
+				label: m.name,
+				value: m.actualPoints
+			}
+		});
+
+
+
 	};
 	
 
@@ -150,12 +140,27 @@ Template.report.onRendered(function(){
 	    ;
 
 	  d3.select('#groupActivityChart svg')
-	    .datum(data())
+	    .datum(groupActivityData())
 	    .transition().duration(500)
 	    .call(chart)
 	    ;
 
 	  nv.utils.windowResize(chart.update);
+
+	  return chart;
+	});
+
+
+	nv.addGraph(function() {
+	  var chart = nv.models.pieChart()
+	      .x(function(d) { return d.label })
+	      .y(function(d) { return d.value })
+	      .showLabels(true);
+
+	    d3.select("#memberPie svg")
+	        .datum(memberPieData())
+	      .transition().duration(1200)
+	        .call(chart);
 
 	  return chart;
 	});
