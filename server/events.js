@@ -65,6 +65,6 @@ Meteor.methods({
   },
 
   'clearMyEvents': function(groupId){
-    Events.remove({owner: Meteor.user().username, groupId: groupId});
+    Events.remove({owner: Meteor.user().profile.name, groupId: groupId});
   }
 })

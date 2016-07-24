@@ -134,6 +134,8 @@ Template.report.onRendered(function(){
 	    })
 	    ;
 
+	  chart.xScale(d3.time.scale()); //fixes misalignment of timescale with line graph
+
 	  chart.yAxis
 	    .axisLabel('Activity Count')
 	    .tickFormat(d3.format('d'))
