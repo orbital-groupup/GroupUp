@@ -74,3 +74,95 @@ Template.report.events({
 		pdfMake.createPdf(docDefinition).open();
 	}
 });
+
+Template.report.onRendered(function(){
+	var groupTasks = Tasks.find({groupId: this.data.group._id, completed: true}).fetch();
+	var thisGroup = this.data.group;
+
+	function groupActivityData() {
+		var myMap = new Map();
+		_.each(groupTasks, function(task){
+			task.dateCompleted.setHours(0,0,0,0);
+
+			if (myMap.has(task.dateCompleted.getTime()))
+				myMap.set(task.dateCompleted.getTime(), myMap.get(task.dateCompleted.getTime())+1);
+			else
+				myMap.set(task.dateCompleted.getTime(), 1);
+		});
+		var theData = Array.from(myMap.entries()).map(function(curr) {return {x: curr[0], y: curr[1]}});
+		return [{
+			values: theData,
+			key: 'Activity',
+			color: '#ff7f0e'
+		}]
+
+	/*
+	var theData = _.map(self.data.group.members, function(member){
+			return {
+				values: groupTasks.filter(task => task.userId === member.userId).map(task=>{x: dateCompleted, y: })
+			}
+		});
+
+	*/
+	};
+
+	function memberPieData(){
+
+		return thisGroup.members.map(function(m){
+			return {
+				label: m.name,
+				value: m.actualPoints
+			}
+		});
+
+
+
+	};
+	
+
+
+	nv.addGraph(function() {
+	  var chart = nv.models.lineChart()
+	    .useInteractiveGuideline(true)
+	    ;
+
+	  chart.xAxis
+	    .axisLabel('Date')
+	    //.tickFormat(d3.format(',r'))
+	    .tickFormat(function(d){
+	    	return d3.time.format('%x')(new Date(d))
+	    })
+	    ;
+
+	  chart.yAxis
+	    .axisLabel('Activity Count')
+	    .tickFormat(d3.format('d'))
+	    ;
+
+	  d3.select('#groupActivityChart svg')
+	    .datum(groupActivityData())
+	    .transition().duration(500)
+	    .call(chart)
+	    ;
+
+	  nv.utils.windowResize(chart.update);
+
+	  return chart;
+	});
+
+
+	nv.addGraph(function() {
+	  var chart = nv.models.pieChart()
+	      .x(function(d) { return d.label })
+	      .y(function(d) { return d.value })
+	      .showLabels(true);
+
+	    d3.select("#memberPie svg")
+	        .datum(memberPieData())
+	      .transition().duration(1200)
+	        .call(chart);
+
+	  return chart;
+	});
+
+})

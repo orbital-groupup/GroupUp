@@ -26,6 +26,7 @@ caching-compiler@1.0.5_1
 caching-html-compiler@1.0.6
 callback-hook@1.0.9
 check@1.2.3
+d3js:d3@3.5.8
 dandv:http-more@1.0.7_1
 ddp@1.2.5
 ddp-client@1.2.8_1
@@ -87,6 +88,7 @@ msavin:jetsetter@2.0.0
 nilsdannemann:pdfmake@1.0.38
 npm-bcrypt@0.8.7
 npm-mongo@1.4.44_1
+nvd3:nvd3@1.8.2
 oauth@1.1.11
 oauth1@1.1.10
 oauth2@1.1.10
