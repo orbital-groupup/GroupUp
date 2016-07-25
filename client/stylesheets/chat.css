@@ -1,0 +1,12 @@
+.msg {
+	font-size: 1.3em;
+}
+
+.textbody {
+	width:95%;
+	height: 35px;
+}
+
+.msg-from {
+	color: purple;
+}

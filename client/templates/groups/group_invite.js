@@ -9,7 +9,7 @@ Template.inviteToGroup.events({
 
 		Meteor.call('inviteToGroup', group, function(error,result){
 			if (error)
-				return throwError(error.reason);
+				return throwError("User does not exist.");
 
 			Router.go('groupPage', {_id: result._id});
 		});

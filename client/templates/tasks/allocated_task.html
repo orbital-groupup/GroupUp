@@ -13,8 +13,12 @@
 			{{/if}}
 			<p>{{description}}</p>
 			<p><strong>{{pluralize points "point"}}</strong></p>	
-			<p>Allocated to {{allocatedTo}}</p>
-			<p>Deadline for task: {{deadline}}</p>
+			<!--{{#if ownsTask}}
+				<p>Allocated to <strong>you</strong></p>
+			{{else}}-->
+				<p>Allocated to {{allocatedTo.name}}</p>
+			<!--{{/if}}-->
+			<p>Deadline for task: {{niceDate}}</p>
 			</div>
 	</div>
 </template>

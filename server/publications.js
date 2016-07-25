@@ -19,3 +19,11 @@ Meteor.publish('items', function() {
 Meteor.publish('uploads', function(groupId) {
   return Uploads.find({groupId: groupId});
 })
+
+Meteor.publish('userData', function(userId){
+	return Meteor.users.find({_id: userId});
+})
+
+Meteor.publish('messages', function(groupId) {
+	return Messages.find({groupId: groupId});
+})

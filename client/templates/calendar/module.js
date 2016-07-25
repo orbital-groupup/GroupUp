@@ -43,7 +43,8 @@ Template.module.helpers({
 				weekType: myTiming.WeekText,
 				groupId: this.groupId,
 				auto: true,
-				owner: Meteor.user().username
+				owner: Meteor.user().profile.name,
+				userId: Meteor.userId()
 			};
 
 			Meteor.call('addEvent', event, function(err,res){
