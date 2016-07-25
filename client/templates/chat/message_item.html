@@ -1,7 +1,9 @@
 <template name = "messageItem">
-	<li>
-		<span class="author">{{author}}</span>
-		<span class="date">says on {{submittedText}} : </span>
+	<li class="msg">
+		<a href="#"  class="msg-from" rel="tooltip" title="on {{submittedText}}">
+		{{author}}
+		says:
+		</a> 
 		{{body}}
 	</li>
 </template>

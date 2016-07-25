@@ -26,6 +26,17 @@
 	margin-bottom: 5px; 
 	pointer-events: auto;
 }
+#no-group {
+	animation: none;
+	-webkit-animation: none; 
+	-moz-animation: none; 
+	/*width: 250px; 
+	float: right; */
+	clear: both; 
+	margin-bottom: 5px; 
+	pointer-events: auto;
+}
+
 .navbar {
 	background: #000;
 }
@@ -79,7 +90,7 @@ html, body {
     background-color: rgb(247, 187, 151);
 }
 
-.fa-exchange{
+#group-title{
 	font-size: 3.5em;
 	color: black;
 }
@@ -91,4 +102,9 @@ html, body {
 
 #memberPie svg {
   height: 400px;
+}
+
+#delete-group {
+	margin-top: 35%;
+	color: red;
 }

@@ -7,3 +7,7 @@ Template.messageItem.helpers({
 		return time + ", " + day;
 	}
 });
+
+Template.messageItem.rendered = function() {
+ 	$('a[rel=tooltip]').tooltip() //initialize all tooltips in this template
+};

@@ -2,6 +2,10 @@ Template.groupsList.created = function() {
 	Session.set('groupSubmitErrors', {});
 }
 
+Template.groupsList.rendered = function() {
+ 	$('a[rel=tooltip]').tooltip() //initialize all tooltips in this template
+};
+
 Template.groupsList.helpers({
 	errorMessage: function(field) {
 		return Session.get('groupSubmitErrors')[field];
@@ -11,7 +15,11 @@ Template.groupsList.helpers({
 	},
 	groups: function() {
 		return Groups.find({ "members.userId": Meteor.userId()});
-	}
+	},
+	noGroups: function() {
+		return Groups.find({ "members.userId": Meteor.userId()}).fetch().length === 0;
+	},
+	username: function() { return Meteor.user().username;}
 });
 
 Template.groupsList.events({

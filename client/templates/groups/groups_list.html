@@ -1,48 +1,47 @@
 <template name="groupsList">
-	<div class="jumbotron">
-	  <h1>This is your Groups Page!</h1>
-	  <p>Create a group, or join one.</p>
-	  <p>
-	  	<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#groupSubmitModal">Create Group</button>
-
-	  		<!-- groupSubmitModal -->
-			<div class="modal fade" id="groupSubmitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-			          <span aria-hidden="true">&times;</span>
-			        </button>
-			        <h4 class="modal-title" id="myModalLabel">Create Group</h4>
-			      </div>
-			      <div class="modal-body">
-			      	<div class="form-group">
-						<label class="control-label" for="title">Name your new Group!</label>
-						<div class="controls">
-							<input name="title" id="title" type ="text"  placeholder="Best Group In The World" class="form-control">
-							<span class="help-block"></span>
-						</div>
-					</div>
-		          </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="button" class="btn btn-primary" id="groupSubmitBtn">Submit</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			<!-- groupSubmitModal -->
-
-
-	  	<a class="btn btn-primary btn-lg" href="{{pathFor 'joinGroup'}}" role="button">Join a Group</a>
-	  </p>
-	</div>
-	
+	{{#if noGroups}}
+	<div class="alert alert-success alert-dismissible" id = "no-group" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Welcome to your Groups page! It looks like you are not part of a Group yet. Start by <a href = "#" data-toggle="modal" data-target="#groupSubmitModal">creating your own Group</a>, or by giving your Group Leader your <a href="#" rel="tooltip" title="{{username}}">username</a> for an invite!</div>
+	{{/if}}
+	<br> 	
 	<div class="groups">
 		<div class="row">
 		{{#each groups}}
 			{{> groupItem}}
 		{{/each}}
+
+		<div class="col-sm-6 col-md-3">
+			<div class="thumbnail">
+				<button type="button" class="btn btn-success btn-lg btn-block createGroup" data-toggle="modal" data-target="#groupSubmitModal">Create Group</button>
+
+			  		<!-- groupSubmitModal -->
+					<div class="modal fade" id="groupSubmitModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					        <h4 class="modal-title" id="myModalLabel">Create Group</h4>
+					      </div>
+					      <div class="modal-body">
+					      	<div class="form-group">
+								<label class="control-label" for="title">Name your new Group!</label>
+								<div class="controls">
+									<input name="title" id="title" type ="text"  placeholder="Best Group In The World" class="form-control">
+									<span class="help-block"></span>
+								</div>
+							</div>
+				          </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <button type="button" class="btn btn-primary" id="groupSubmitBtn">Submit</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					<!-- groupSubmitModal -->
+				</div>
+			</div>
 		</div>
 	</div>
 
