@@ -33,5 +33,9 @@ Template.userEdit.helpers({
       } else {
         return;
       }
-    }
+    },
+
+  unwantedService: function(service){
+  	return service === 'password' || service === 'resume' || service === 'email';
+  }
 });

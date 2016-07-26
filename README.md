@@ -33,12 +33,12 @@ https://docs.google.com/spreadsheets/d/1uSpCxnMvNcP7-RXX3IFkLeBh8X5B8Y5paSeKdsY0
 
 ## Run on your system
 ### To run
-```
+```sh
 meteor --settings settings.json
 ```
 
 ### Setting up settings.json
-```
+```json
 {
 	"private": {
 		"smtp": {

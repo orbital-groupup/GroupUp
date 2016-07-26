@@ -9,7 +9,9 @@
 	<h3>Services associated with current user.</h3>
 	<ul>
 		{{#each services}}
+			{{#unless unwantedService this}}
 			<li>{{this}}</li>
+			{{/unless}}
 		{{/each}}
 	</ul>
 
